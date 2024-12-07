@@ -13,7 +13,7 @@ APACHE_LOG_DIR = "/var/log/apache2"
 [watchPatterns]
 patterns = [
     "dockerfile",
-    "index-test.php",
+    "index.php",
     "bg.png",
     "picture.png"
 ]

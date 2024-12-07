@@ -1,19 +1,19 @@
-[build]
-builder = "DOCKERFILE"
-dockerfilePath = "./dockerfile"
+# Use a base image for PHP and Apache
+FROM php:8.1-apache
 
-[deploy]
-startCommand = "apache2-foreground"
+# Set the working directory inside the container
+WORKDIR /var/www/html
 
-[env]
-APACHE_RUN_USER = "www-data"
-APACHE_RUN_GROUP = "www-data"
-APACHE_LOG_DIR = "/var/log/apache2"
+# Copy frontend files to the Apache root directory
+COPY index.php .
+COPY bg.png .
+COPY picture.png .
 
-[watchPatterns]
-patterns = [
-    "dockerfile",
-    "index.php",
-    "bg.png",
-    "picture.png"
-]
+# Enable Apache rewrite module
+RUN a2enmod rewrite
+
+# Expose port 80 for the web server
+EXPOSE 80
+
+# Default command to start Apache
+CMD ["apache2-foreground"]

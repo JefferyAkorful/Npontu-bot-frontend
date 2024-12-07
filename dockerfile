@@ -4,12 +4,12 @@ FROM php:8.1-apache
 # Set the working directory
 WORKDIR /var/www/html
 
-# Explicitly specify relative paths
-COPY index-test.php 
-COPY bg.png 
-COPY picture.png
+# Copy frontend files explicitly
+COPY ./index.php ./index.php
+COPY ./bg.png ./bg.png
+COPY ./picture.png ./picture.png
 
-# Configure Apache
+# Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
 # Expose port 80 for the web server

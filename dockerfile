@@ -5,9 +5,9 @@ FROM php:8.1-apache
 WORKDIR /var/www/html
 
 # Explicitly specify relative paths
-COPY index.php index.php
-COPY bg.png bg.png
-COPY picture.png picture.png
+COPY index-test.php 
+COPY bg.png 
+COPY picture.png
 
 # Configure Apache
 RUN a2enmod rewrite

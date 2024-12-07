@@ -5,9 +5,10 @@ FROM php:8.1-apache
 WORKDIR /var/www/html
 
 # Copy the frontend files to the Apache root directory
-COPY index.php .
-COPY bg.png .
-COPY picture.png .
+COPY index.php /var/www/html/
+COPY bg.png /var/www/html/
+COPY picture.png /var/www/html/
+
 
 # Set up environment variable for the backend URL (optional)
 ENV BACKEND_API_URL="https://npontu-bot-production.up.railway.app"

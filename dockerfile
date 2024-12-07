@@ -1,23 +1,19 @@
-# Use a base image with PHP and Apache
-FROM php:8.1-apache
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "./dockerfile"
 
-# Set the working directory inside the container
-WORKDIR /var/www/html
+[deploy]
+startCommand = "apache2-foreground"
 
-# Copy the frontend files to the Apache root directory
-COPY index.php /var/www/html/
-COPY bg.png /var/www/html/
-COPY picture.png /var/www/html/
+[env]
+APACHE_RUN_USER = "www-data"
+APACHE_RUN_GROUP = "www-data"
+APACHE_LOG_DIR = "/var/log/apache2"
 
-
-# Set up environment variable for the backend URL (optional)
-ENV BACKEND_API_URL="https://npontu-bot-production.up.railway.app"
-
-# Enable Apache's rewrite module
-RUN a2enmod rewrite
-
-# Expose port 80 for the Apache server
-EXPOSE 80
-
-# Start the Apache server
-CMD ["apache2-foreground"]
+[watchPatterns]
+patterns = [
+    "dockerfile",
+    "index.php",
+    "bg.png",
+    "picture.png"
+]

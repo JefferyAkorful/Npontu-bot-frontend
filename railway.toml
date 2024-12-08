@@ -15,7 +15,7 @@ patterns = [
     "dockerfile",
     "index.php",
     "npontuLogo.png",
-    "npontu.png"
+    "npontu.png",
     "bg.png",
     "picture.png"
 ]
